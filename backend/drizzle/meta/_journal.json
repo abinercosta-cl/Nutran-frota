@@ -8,6 +8,13 @@
       "when": 1788112110299,
       "tag": "0000_spotty_black_bird",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1788113780639,
+      "tag": "0001_audit_log_immutable",
+      "breakpoints": true
     }
   ]
 }

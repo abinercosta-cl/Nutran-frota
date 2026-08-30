@@ -12,7 +12,9 @@ Sistema de uso interno da Polícia Federal. Requisitos mínimos a manter em toda
    - Segregação por unidade/lotação (um gestor da SNM não deve visualizar dados de outra superintendência, salvo permissão explícita).
 
 3. **Auditoria**
-   - Tabela `audit_log` apenas com INSERT (sem UPDATE/DELETE), contendo: usuário, ação, timestamp, IP, entidade afetada.
+   - Tabela `audit_log` estritamente somente-leitura após escrita (apenas INSERT permitido).
+   - **Garantia no Banco (PostgreSQL):** Protegida ativamente por trigger (`trg_audit_log_immutable`) e função (`audit_log_immutable()`) que abortam qualquer tentativa de `UPDATE` ou `DELETE` com `RAISE EXCEPTION`.
+   - Contém: usuário, ação, timestamp, IP, entidade afetada.
    - Toda ação sensível (saída de viatura, aprovação de saldo, alteração de usuário) gera registro de auditoria.
    - Commits neste repositório também servem como trilha de auditoria do desenvolvimento — mensagens de commit devem ser descritivas.
 
