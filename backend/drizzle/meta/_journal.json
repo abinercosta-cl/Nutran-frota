@@ -15,6 +15,13 @@
       "when": 1788113780639,
       "tag": "0001_audit_log_immutable",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1788442929289,
+      "tag": "0002_wonderful_kylun",
+      "breakpoints": true
     }
   ]
 }
