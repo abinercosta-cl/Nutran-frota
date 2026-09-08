@@ -14,14 +14,14 @@ import { usuarios, auditLog } from '../src/db/schema.js';
 async function seedAdmin() {
   console.log('🌱 Iniciando seed de usuário administrador...');
 
-  const matricula = process.env.SEED_ADMIN_MATRICULA;
-  const senha = process.env.SEED_ADMIN_SENHA;
-  const nome = process.env.SEED_ADMIN_NOME || 'Administrador Inicial';
-  const lotacao = process.env.SEED_ADMIN_LOTACAO || 'SNM — Sede';
+  const matricula = process.env.SEED_ADMIN_MATRICULA || process.env.ADMIN_MATRICULA;
+  const senha = process.env.SEED_ADMIN_SENHA || process.env.ADMIN_SENHA;
+  const nome = process.env.SEED_ADMIN_NOME || process.env.ADMIN_NOME || 'Administrador Inicial';
+  const lotacao = process.env.SEED_ADMIN_LOTACAO || process.env.ADMIN_LOTACAO || 'SNM — Sede';
 
   if (!matricula || !senha) {
-    console.error('❌ ERRO: Variáveis SEED_ADMIN_MATRICULA e SEED_ADMIN_SENHA são obrigatórias.');
-    console.error('Defina-as no arquivo .env antes de executar o seed.');
+    console.error('❌ ERRO: Matrícula e senha são obrigatórias para o seed.');
+    console.error('Defina SEED_ADMIN_MATRICULA (ou ADMIN_MATRICULA) e SEED_ADMIN_SENHA (ou ADMIN_SENHA) no .env.');
     process.exit(1);
   }
 
