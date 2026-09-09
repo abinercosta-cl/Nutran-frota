@@ -4,6 +4,7 @@ dotenv.config();
 import express, { Request, Response } from 'express';
 import cors from 'cors';
 import { authRouter } from './routes/auth.routes.js';
+import { veiculoRouter } from './routes/veiculo.routes.js';
 import { authMiddleware, requireRole } from './middlewares/auth.middleware.js';
 
 const app = express();
@@ -23,6 +24,9 @@ app.get('/health', (_req: Request, res: Response) => {
 
 // Rotas de autenticação
 app.use('/auth', authRouter);
+
+// Rotas do módulo de veículos
+app.use('/veiculos', veiculoRouter);
 
 // Rota de teste RBAC para administradores
 app.get(
